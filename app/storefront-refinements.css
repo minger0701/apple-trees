@@ -1,0 +1,359 @@
+/* Scoped lifestyle polish. Existing content, routes and checkout stay intact. */
+.orchard-site .site-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(18px, 2vw, 30px);
+  backdrop-filter: none;
+}
+.orchard-site .site-header-actions > .site-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.orchard-site .site-header .site-nav {
+  gap: clamp(13px, 1.6vw, 25px);
+}
+
+/* Less enlargement reveals the distant ridges and more of the apple canopy. */
+.orchard-site .site-hero {
+  min-height: 520px;
+  height: clamp(520px, 37vw, 575px);
+  max-height: none;
+}
+.orchard-site .site-hero-image { object-position: 66% 50%; }
+.orchard-site .site-hero-wash {
+  background: linear-gradient(90deg, #faf7eddd 0%, #faf7edb8 25%, #f8f5e64d 48%, transparent 68%),
+    linear-gradient(0deg, #15270f26, transparent 55%);
+}
+.orchard-site .site-hero-copy {
+  width: min(820px, 65vw);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-right: 20px;
+}
+.orchard-site .site-hero h1 {
+  font-size: clamp(48px, 4.8vw, 72px);
+  margin-block: 18px;
+}
+.orchard-site .site-hero .site-actions { margin-block: 23px 28px; }
+.orchard-site .site-hero-note { right: 4.5%; bottom: 11%; font-size: 24px; }
+.orchard-site .site-hero-stamp { right: 5%; top: 10%; font-size: 19px; }
+
+/* One editorial spread: broad copy, a quieter phone, and staggered alignment. */
+.orchard-site .site-intro {
+  grid-template-columns: minmax(245px, .95fr) minmax(360px, 1.48fr) 208px;
+  gap: clamp(28px, 3vw, 44px);
+  align-items: center;
+}
+.orchard-site .site-intro-copy { min-width: 0; }
+.orchard-site .site-intro-copy h2 { font-size: clamp(24px, 2vw, 29px); letter-spacing: .5px; }
+.orchard-site .site-intro .site-phone {
+  transform: scale(.88) rotate(1deg);
+  transform-origin: center;
+  margin: -20px 0;
+  justify-self: center;
+  box-shadow: 4px 7px 13px #242a201a;
+}
+.orchard-site .site-intro .site-editorial-photo { align-self: start; margin-top: 8px; }
+.orchard-site .site-intro .site-editorial-photo > .site-polaroid {
+  right: -18px;
+  bottom: -24px;
+  transform: rotate(7deg);
+}
+.orchard-site .site-intro .site-polaroid img { position: static; height: 80px; }
+.orchard-site .site-intro .site-polaroid span { padding-left: 0; }
+
+/* Reserve a full phrase width instead of allowing individual Chinese glyphs to wrap. */
+.orchard-site .site-process { grid-template-columns: minmax(225px, 235px) minmax(0, 1fr); }
+.orchard-site .site-process h2 { white-space: nowrap; font-size: clamp(24px, 2.1vw, 27px); }
+
+.orchard-site .site-story {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 23px;
+  border: 0;
+  border-bottom: 1px solid #dbdfcf;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 2px 2px 0 0;
+}
+.orchard-site .site-story-photo {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  margin-bottom: 22px;
+  background: #e9eadc;
+}
+.orchard-site .site-story-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  transition: transform .35s ease;
+}
+.orchard-site .site-story:hover .site-story-photo img { transform: scale(1.025); }
+.orchard-site .site-story-number {
+  inset: auto 16px 12px auto;
+  color: #fff8e9;
+  font-size: 28px;
+  text-shadow: 0 1px 8px #27341c80;
+}
+.orchard-site .site-story > small,
+.orchard-site .site-story > h3,
+.orchard-site .site-story > p,
+.orchard-site .site-story > .site-story-link { margin-inline: 14px; }
+.orchard-site .site-story > h3 { margin-block: 10px 12px; }
+.orchard-site .site-story > p { flex: 1; min-height: 0; font-size: 14px; line-height: 1.95; }
+.orchard-site .site-story-link { margin-top: 22px; border-top: 0; padding-top: 0; }
+
+/* Full photographic closing spread, with readable type over orchard foliage. */
+.orchard-site .site-final {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0;
+  min-height: 360px;
+  isolation: isolate;
+  background: #303f24;
+}
+.orchard-site .site-final-image,
+.orchard-site .site-final-copy,
+.orchard-site .site-final::after { grid-area: 1 / 1; }
+.orchard-site .site-final-image {
+  height: 100%;
+  min-height: 360px;
+  max-height: 460px;
+  object-fit: cover;
+  object-position: 65% 50%;
+  z-index: -2;
+}
+.orchard-site .site-final::after {
+  content: '';
+  background: linear-gradient(90deg, #15220d52 0%, #14230f82 35%, #14230f78 63%, #15220d45 100%),
+    linear-gradient(0deg, #15220d55, transparent 65%);
+  z-index: -1;
+}
+.orchard-site .site-final-copy { align-self: center; padding: 52px 24px; }
+.orchard-site .site-final h2 { color: #fffbee; text-shadow: 0 1px 12px #12200d50; }
+.orchard-site .site-final p { color: #f1f0df; }
+.orchard-site .site-final .site-eyebrow { color: #e3e8cf; }
+.orchard-site .site-final .site-btn { background: #f5f2e6; color: #3e4e2e!important; border-color: #f5f2e6; }
+.orchard-site .site-final .site-btn:hover { background: #fffdf5; }
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .orchard-site .site-header { padding-inline: 22px; gap: 16px; }
+  .orchard-site .site-header .site-nav { gap: 12px; font-size: 12px; }
+  .orchard-site .site-header .site-logo strong { font-size: 20px; }
+  .orchard-site .site-header .site-logo small { font-size: 9px; letter-spacing: .5px; }
+  .orchard-site .site-header-actions { gap: 8px; }
+  .orchard-site .site-search { width: 25px; }
+  .orchard-site .site-intro { grid-template-columns: minmax(210px, .92fr) minmax(285px, 1.4fr) 180px; gap: 24px; }
+  .orchard-site .site-intro-copy h2 { font-size: 23px; letter-spacing: 0; }
+  .orchard-site .site-hero-copy { width: 70vw; }
+}
+@media (max-width: 900px) {
+  .orchard-site .site-header { grid-template-columns: 1fr auto; }
+  .orchard-site .site-header .site-nav { gap: 0; }
+  .orchard-site .site-intro { grid-template-columns: minmax(220px, .9fr) minmax(0, 1.25fr); gap: 28px; }
+  .orchard-site .site-process { grid-template-columns: 1fr; }
+  .orchard-site .site-hero-copy { width: 78vw; }
+  .orchard-site .site-hero h1 { font-size: 48px; }
+  .orchard-site .site-story > h3 { font-size: 21px; }
+  .orchard-site .site-story > p { font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .orchard-site .site-header { padding-inline: 14px; gap: 10px; }
+  .orchard-site .site-header .site-logo { gap: 6px; }
+  .orchard-site .site-header .site-logo strong { font-size: 19px; }
+  .orchard-site .site-header .site-logo small { font-size: 8px; letter-spacing: .5px; }
+  .orchard-site .site-header-actions { gap: 4px; }
+  .orchard-site .site-header-actions > .site-btn { padding: 9px 12px; gap: 5px; }
+  .orchard-site .site-header-actions > .site-btn svg { display: none; }
+  .orchard-site .site-menu { padding: 7px 0 7px 5px; }
+  .orchard-site .site-hero { min-height: 550px; height: auto; }
+  .orchard-site .site-hero-image { object-position: 44% 50%; }
+  .orchard-site .site-hero-wash { background: linear-gradient(90deg, #f8f5eae8, #f8f5eab8 62%, #f8f5ea55); }
+  .orchard-site .site-hero-copy { width: 100%; padding: 32px 24px 95px; }
+  .orchard-site .site-hero h1 { font-size: clamp(32px, 8.4vw, 44px); }
+  .orchard-site .site-hero-note { font-size: 18px; right: 20px; bottom: 24px; }
+  .orchard-site .site-hero-stamp { top: auto; bottom: 30px; left: 24px; right: auto; font-size: 15px; color: #5d6947; text-shadow: none; }
+  .orchard-site .site-intro { grid-template-columns: 1fr; gap: 28px; }
+  .orchard-site .site-intro-copy h2 { font-size: clamp(22px, 6vw, 26px); }
+  .orchard-site .site-intro .site-editorial-photo > .site-polaroid { right: 12px; }
+  .orchard-site .site-process h2 { font-size: 26px; }
+  .orchard-site .site-story-photo { aspect-ratio: 3 / 2; margin-bottom: 18px; }
+  .orchard-site .site-story > h3 { font-size: 25px; }
+  .orchard-site .site-story > p { font-size: 14px; }
+  .orchard-site .site-final, .orchard-site .site-final-image { min-height: 330px; }
+  .orchard-site .site-final-copy { padding-block: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orchard-site .site-story-photo img { transition: none; }
+}
+
+
+/* Requested editorial refinements: four portrait stories, quiet handwriting, and a warmer close. */
+.orchard-site .site-intro-handnote {
+  margin: 11px 0 0 auto;
+  width: fit-content;
+  color: #737c5b;
+  font: 19px/1.35 'KaiTi', 'STKaiti', 'Noto Serif CJK SC', serif;
+  letter-spacing: 1px;
+  transform: rotate(-3deg);
+}
+.orchard-site .site-intro-handnote small {
+  display: block;
+  margin-top: 6px;
+  color: #9a9e83;
+  font: 9px/1.4 Arial, sans-serif;
+  letter-spacing: 1.3px;
+  text-align: right;
+}
+.orchard-site .site-mountain-line { gap: 4px; color: #a8b29a; opacity: .7; }
+.orchard-site .site-mountain-ridge { margin-left: -16px; margin-bottom: 1px; opacity: .62; }
+.orchard-site .site-story-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.orchard-site .site-story-more {
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 25px 20px;
+  border: 0;
+  border-radius: 2px;
+  background: #69744f;
+  color: #fffdf3;
+  text-align: left;
+  transition: background .2s, transform .2s;
+}
+.orchard-site .site-story-more:hover { background: #56613c; transform: translateY(-3px); }
+.orchard-site .site-story-more > span { font: 21px/1.7 'KaiTi', 'STKaiti', serif; letter-spacing: 1px; }
+.orchard-site .site-story-more > small { font: 10px Arial, sans-serif; letter-spacing: 2px; opacity: .82; }
+.orchard-site .site-story-more > svg { align-self: flex-end; padding: 4px; border-radius: 50%; background: #f7f5e9; color: #596544; box-sizing: content-box; }
+.orchard-site .site-final::after {
+  background: linear-gradient(90deg, #fff4dc1c 0%, #fff4dc35 35%, #fff4dc2b 68%, #fff4dc12 100%),
+    linear-gradient(0deg, #342b1724, transparent 70%);
+}
+.orchard-site .site-final h2 { color: #fffdf3; text-shadow: 0 1px 10px #1c24154a; }
+.orchard-site .site-final p { color: #fff8e8; text-shadow: 0 1px 7px #1c241546; }
+.orchard-site .site-final .site-eyebrow { color: #fff4db; text-shadow: 0 1px 7px #1c241546; }
+.orchard-site .site-final .site-btn { background: #596744; color: #fffdf4!important; border-color: #596744; }
+.orchard-site .site-final .site-btn:hover { background: #465434; }
+@media (max-width: 1180px) {
+  .orchard-site .site-story-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .orchard-site .site-story-more { min-height: 210px; }
+}
+@media (max-width: 600px) {
+  .orchard-site .site-story-grid { grid-template-columns: 1fr; }
+  .orchard-site .site-story-more { min-height: 170px; }
+  .orchard-site .site-intro-handnote { font-size: 18px; }
+}
+
+/* Homepage reference composition — visual changes only. */
+.orchard-site .site-hero { height: clamp(410px, 31vw, 470px); min-height: 410px; }
+.orchard-site .site-hero-image { object-position: 65% 46%; }
+.orchard-site .site-hero-copy { padding-block: 18px; padding-left: max(48px, calc((100vw - 1260px)/2)); }
+.orchard-site .site-hero h1 { font-size: clamp(44px, 4.25vw, 62px); line-height: 1.2; margin-block: 13px 16px; }
+.orchard-site .site-hero-copy > p { font-size: 15px; line-height: 1.8; }
+.orchard-site .site-hero .site-actions { margin-block: 19px 22px; }
+.orchard-site .site-stats strong { font-size: 27px; }
+.orchard-site .site-stats span { margin-top: 3px; }
+.orchard-site .site-hero-note { bottom: 12%; font-size: 23px; }
+.orchard-site .site-scroll { bottom: 12px; }
+.orchard-site .site-intro { width: min(1260px, calc(100% - 80px)); grid-template-columns: minmax(0, 30fr) minmax(0, 35fr) minmax(0, 29fr); gap: 28px; padding-block: 40px; align-items: center; background: transparent; }
+.orchard-site .site-intro:before { display: none; }
+.orchard-site .site-intro .site-editorial-photo { height: 365px; margin: 0; align-self: center; overflow: hidden; }
+.orchard-site .site-editorial-photo > img { object-position: center; }
+.orchard-site .site-intro .site-editorial-photo > div, .orchard-site .site-intro .site-editorial-photo > small, .orchard-site .site-intro .site-editorial-photo:after { display: none; }
+.orchard-site .site-intro-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 0; }
+.orchard-site .site-intro-copy h2 { font-size: clamp(23px, 1.95vw, 28px); line-height: 1.5; margin: 12px 0 16px; letter-spacing: 0; }
+.orchard-site .site-intro-copy > p { font-size: 14px; line-height: 2; margin-bottom: 10px; }
+.orchard-site .site-intro-copy > .site-text-link { order: 1; margin-top: 7px; }
+.orchard-site .site-mountain-line { order: 2; width: 100%; margin: 8px 0 0; height: 64px; color: #a9b095; align-items: end; }
+.orchard-site .site-mountain-line > svg:first-child { width: 146px; height: 65px; }
+.orchard-site .site-mountain-line > .site-mountain-ridge { width: 80px; height: 44px; margin-left: -40px; }
+.orchard-site .site-trust { order: 3; margin-top: 9px; padding-top: 11px; width: 100%; gap: 14px; }
+.orchard-site .site-phone-scene { position: relative; min-width: 0; height: 385px; display: flex; align-items: center; isolation: isolate; }
+.orchard-site .site-intro .site-phone { display: block; flex-shrink: 0; width: 190px; padding: 12px 11px 13px; border-width: 5px; border-radius: 27px; margin: 0; transform: rotate(-1.5deg); box-shadow: 3px 6px 7px #242a202c; z-index: 2; }
+.orchard-site .site-phone-top { margin-bottom: 9px; }
+.orchard-site .site-phone > img { height: 95px; }
+.orchard-site .site-phone h3 { font-size: 19px; margin: 3px 0 7px; }
+.orchard-site .site-phone-state { margin: 9px 0 7px; gap: 6px; font-size: 11px; }
+.orchard-site .site-phone-state > span { padding: 5px; }
+.orchard-site .site-phone-stage { padding-block: 3px; }
+.orchard-site .site-phone > button { margin-top: 8px; padding-top: 7px; }
+.orchard-site .site-phone-scene .site-polaroid { right: -8px; bottom: 24px; width: 135px; padding: 0; background: transparent; box-shadow: none; transform: rotate(3deg); z-index: 1; }
+.orchard-site .site-phone-scene .site-polaroid img { position: static; width: 100%; height: auto; object-fit: contain; }
+.orchard-site .site-phone-scene .site-polaroid span { font-size: 14px; padding: 0; }
+.orchard-site .site-phone-scene .site-intro-handnote { position: absolute; top: 25px; right: -4px; max-width: 125px; margin: 0; font-size: 18px; line-height: 1.6; z-index: 1; }
+.orchard-site .site-phone-scene .site-intro-handnote small { font-size: 8px; line-height: 1.5; text-align: left; }
+.orchard-site .site-intro-botanical { position: absolute; bottom: 4px; right: 54px; color: #adb79b; opacity: .5; z-index: 0; }
+.orchard-site .site-plans-band { padding-block: 32px 36px; background: linear-gradient(120deg, #f8f7f1, #f4f3ec); }
+.orchard-site .site-plans-layout { width: min(1260px, calc(100% - 80px)); grid-template-columns: 235px minmax(0, 1fr); gap: 28px; align-items: center; }
+.orchard-site .site-plan-grid { gap: 20px; }
+.orchard-site .site-plan { padding: 21px 20px 18px; border-radius: 10px; }
+.orchard-site .site-plan-name h3 { font-size: 25px; }
+.orchard-site .site-plan > p { margin: 4px 0 13px; padding-right: 0; font-size: 12px; }
+.orchard-site .site-plan-art { position: absolute; right: 13px; top: 70px; width: 72px; height: 88px; object-fit: contain; mix-blend-mode: multiply; pointer-events: none; }
+.orchard-site .site-plan-botanical { position: absolute; right: 17px; top: 80px; color: #a2ad8c; opacity: .55; }
+.orchard-site .site-price { font-size: 37px; line-height: 1.2; min-height: 45px; }
+.orchard-site .site-plan ul { padding: 13px 0 16px; }
+.orchard-site .site-plan li { margin: 6px 0; font-size: 13px; line-height: 1.65; }
+.orchard-site .site-plan .site-btn { min-height: 38px; padding-block: 7px; }
+.orchard-site .site-plans-layout .site-section-aside > small { margin-top: 14px; }
+.orchard-site .site-plans-layout .site-section-aside .site-text-link { margin-top: 16px; }
+@media (max-width: 1180px) and (min-width: 901px) {
+  .orchard-site .site-intro, .orchard-site .site-plans-layout { width: calc(100% - 56px); gap: 22px; }
+  .orchard-site .site-intro { grid-template-columns: minmax(0, 30fr) minmax(0, 37fr) minmax(0, 27fr); }
+  .orchard-site .site-intro-copy h2 { font-size: 23px; }
+  .orchard-site .site-phone-scene .site-polaroid { width: 93px; right: -9px; bottom: 10px; }
+  .orchard-site .site-phone-scene .site-intro-handnote { top: -12px; right: 0; font-size: 14px; }
+  .orchard-site .site-intro .site-phone { width: 176px; }
+  .orchard-site .site-plans-layout { grid-template-columns: 180px minmax(0,1fr); }
+  .orchard-site .site-plan { padding-inline: 14px; }
+  .orchard-site .site-plan-name h3 { font-size: 22px; }
+  .orchard-site .site-plan-art { width: 55px; right: 7px; }
+}
+@media (max-width: 900px) {
+  .orchard-site .site-hero { height: 430px; min-height: 430px; }
+  .orchard-site .site-hero h1 { font-size: 44px; }
+  .orchard-site .site-intro { grid-template-columns: minmax(0,1fr) minmax(0,1.15fr); width: calc(100% - 48px); gap: 26px; }
+  .orchard-site .site-intro .site-editorial-photo { height: 360px; }
+  .orchard-site .site-phone-scene { grid-column: 1 / -1; width: 340px; max-width: 100%; margin-inline: auto; height: 380px; }
+  .orchard-site .site-plans-layout { display: block; width: calc(100% - 48px); }
+  .orchard-site .site-plan-grid { gap: 20px; }
+  .orchard-site .site-plan { padding-inline: 16px; }
+  .orchard-site .site-plan-name h3 { font-size: 22px; }
+  .orchard-site .site-plan-art { width: 54px; }
+}
+@media (max-width: 600px) {
+  .orchard-site .site-hero { min-height: 470px; height: auto; }
+  .orchard-site .site-hero-copy { padding: 25px 22px 94px; width: 100%; }
+  .orchard-site .site-hero h1 { font-size: clamp(32px, 8.8vw, 44px); }
+  .orchard-site .site-hero-copy > p { font-size: 14px; }
+  .orchard-site .site-hero-note { bottom: 20px; font-size: 17px; }
+  .orchard-site .site-intro { grid-template-columns: 1fr; width: calc(100% - 40px); padding-block: 32px; gap: 28px; }
+  .orchard-site .site-intro .site-editorial-photo { height: 340px; width: 100%; max-width: 380px; justify-self: center; }
+  .orchard-site .site-intro-copy h2 { font-size: 25px; }
+  .orchard-site .site-phone-scene { grid-column: auto; }
+  .orchard-site .site-plans-layout { width: calc(100% - 40px); }
+  .orchard-site .site-plan { padding: 23px; }
+  .orchard-site .site-plan-name h3 { font-size: 25px; }
+  .orchard-site .site-plan-art { width: 75px; right: 22px; }
+  .orchard-site .site-plan ul { grid-template-columns: 1fr; gap: 0; }
+}
+
+.orchard-site .site-intro > * { min-width: 0; }
+.orchard-site .site-intro .site-editorial-photo > img { object-position: center bottom; }
+.orchard-site .site-plan-art { clip-path: inset(8% 0 0); }
+.orchard-site .site-plan { cursor: pointer; }
+.orchard-site .site-plan:focus-visible { outline: 2px solid #647047; outline-offset: 3px; }
+.orchard-site .site-plan.recommended:not(.is-selected) { border-color: #e9e8dd; box-shadow: 0 3px 12px #68644904; background: #fcfcf8; }
+.orchard-site .site-plan.is-selected { border-color: #adb68e; box-shadow: 0 5px 12px #4a542316; background: #fffef8; }
+@media (max-width: 600px) {
+  .orchard-site .site-intro { grid-template-columns: minmax(0, 1fr); }
+  .orchard-site .site-phone-scene { width: 100%; max-width: 340px; }
+  .orchard-site .site-phone-scene .site-polaroid { right: 0; width: 105px; }
+  .orchard-site .site-phone-scene .site-intro-handnote { right: 0; max-width: 108px; font-size: 16px; }
+}
