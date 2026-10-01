@@ -1,0 +1,1 @@
+const fs=require('fs');fetch('https://images.unsplash.com/photo-1727120279660-5c28b8461609?auto=format&fit=crop&w=1100&q=85').then(async r=>{if(!r.ok)throw Error(r.status);fs.writeFileSync('public/orchard.jpg',Buffer.from(await r.arrayBuffer()));console.log('Orchard photo saved')}).catch(e=>{console.error(e);process.exitCode=1});

@@ -1,0 +1,15 @@
+from pathlib import Path
+p=Path('app/store.ts');s=p.read_text(encoding='utf-8-sig')
+s=s.replace("// 87 contracts: 26 × 299 + 41 × 499 + 20 × 699 = 42,413.","// 87 contracts: 26 × 299 + 41 × 499 + 20 × 699 = 42,413.")
+s=s.replace("export const seed={", "const initialOrders=Array.from({length:0});\nexport const seed={")
+s=s.replace("renewal:'70'", "renewal:(d.users.filter((u:any)=>u.history.some((h:any)=>h.year===2025)&&u.history.some((h:any)=>h.year===2026)).length/Math.max(1,d.users.filter((u:any)=>u.history.some((h:any)=>h.year===2025)).length)*100).toFixed(0)")
+s += '''\n// Keep demonstration histories, dates and delivery states consistent.\nseed.users.forEach((u,i)=>{u.date=`2026-${String(3+Math.floor(i/12)).padStart(2,'0')}-${String(i%12+1).padStart(2,'0')}`;u.history.forEach(h=>{if(h.year===2026&&h.tree===u.tree)h.date=u.date})});\nseed.orders.forEach(o=>{const u=seed.users.find(u=>u.id===o.user)!;u.history.forEach(h=>{if(h.year===2026&&h.tree===o.tree)h.status=o.status==='已完成'?'已完成':'交付中'});if(o.status==='已完成')seed.trees.find(t=>t.id===o.tree)!.stage='已完成'});\nexport function revenueSeries(d:any){return [3,4,5,6,7,8,9].map(month=>d.users.flatMap((u:any)=>u.history).filter((h:any)=>h.year===2026&&Number(h.date.slice(5,7))<=month).reduce((s:number,h:any)=>s+h.amount,0))}\n'''
+s=s.replace("const initialOrders=Array.from({length:0});\n",'')
+p.write_text(s,encoding='utf-8')
+p=Path('app/page.tsx');s=p.read_text(encoding='utf-8-sig').replace('adopt,advance,renew}', 'adopt,advance,renew,revenueSeries}')
+start=s.index('const chart=<div');end=s.index('\nreturn <SidebarProvider>',start)
+s=s[:start]+'''const vals=revenueSeries(db),max=Math.max(50000,...vals),pts=vals.map((v:number,i:number)=>`${i*110},${165-v/max*150}`).join(' ');
+const chart=<div className="chart"><div className="chart-y">{[max,Math.round(max*.66),Math.round(max*.33),0].map(v=><span key={v}>{v.toLocaleString()}</span>)}</div><div className="plot"><svg viewBox="0 0 660 180" preserveAspectRatio="none" aria-label="三月至九月累计认领收入趋势"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#52784b" stopOpacity=".18"/><stop offset="1" stopColor="#52784b" stopOpacity="0"/></linearGradient></defs>{[15,65,115,165].map(y=><line key={y} x1="0" x2="660" y1={y} y2={y} stroke="#e9ece4" strokeDasharray="4 5"/>)}<polygon points={'0,180 '+pts+' 660,180'} fill="url(#area)"/><polyline points={pts} stroke="#53774a" strokeWidth="3" fill="none"/>{vals.map((v:number,i:number)=><circle key={i} cx={i*110} cy={165-v/max*150} r="4" fill="#53774a"><title>{i+3}月累计 ¥{v.toLocaleString()}</title></circle>)}</svg><div className="months">{['3月','4月','5月','6月','7月','8月','9月'].map(x=><span key={x}>{x}</span>)}</div></div></div>;''' + s[end:]
+s=s.replace("db.users.slice(-4).reverse()", "[...db.users].sort((a:any,b:any)=>b.date.localeCompare(a.date)).slice(0,4)")
+s=s.replace("{pick('tree','果树编号',db.trees.map((t:any)=>t.id))}","{pick('tree','果树编号',db.trees.map((t:any)=>t.id))}")
+p.write_text(s,encoding='utf-8')

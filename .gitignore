@@ -1,0 +1,52 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+*.log
+/.idea/
+/.playwright-mcp/
+/.npm-cache/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local environment
+.env*
+!.env.example
+
+# deployment and generated files
+.vercel
+next-env.d.ts
+/dist/
+/.wrangler/
+/.openai/
+/outputs/
+/work/
+
+# local working files and design references (used images live in public/images)
+/download.cjs
+/fix.py
+/verify.ts
+/public/reference/
+/public/1a0d72c0-19f1-42d8-82fc-5470407239f4.png
